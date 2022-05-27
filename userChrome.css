@@ -1,0 +1,367 @@
+/*
+ideas:
+ - when hovered on tab, show the x button and extend the text, otherwise don't show the x button
+ - find some good colors
+ - !DONE! add short animations when hovering on buttons
+
+
+
+*/
+
+/* ====== icons ====== */
+
+/*? back button on titlebar */
+#back-button {
+   margin-left: 3vw !important;
+}
+#back-button image {
+   list-style-image: url("./assets/icons/back.svg") !important;
+}
+
+/*? forward button on titlebar */
+#forward-button image {
+   list-style-image: url("./assets/icons/forward.svg") !important;
+}
+
+/*? reload button on titlebar */
+#reload-button {
+   margin-right: 3vw !important;
+}
+#reload-button>image {
+   /*? change reload button animation length */
+   animation-duration: .5s !important;
+   animation-timing-function: ease-in-out !important;
+}
+
+/* bookmark star button on titlebar */
+#star-button[starred="true"] {
+   /*? change bookmark star button to yellow when starred */
+   fill: #ff0 !important;
+}
+
+:root {
+   /*? standardized radius */
+   --pf-radius-1: 12.5px;
+   --pf-radius-2: 8px;
+
+   /*? cool shit :)) */
+   --pf-gradient-main: linear-gradient(45deg, rgba(224, 16, 155, 1) 0%, rgba(152, 11, 235, 1) 12%, rgba(152, 11, 235, 1) 20%, rgba(23, 134, 242, 1) 45%, rgba(23, 134, 242, 1) 52%, rgba(152, 11, 235, 1) 80%, rgba(152, 11, 235, 1) 88%, rgba(224, 16, 155, 1) 100%);
+
+   /*? max tab width */
+   --pf-tab-max-width: 165px;
+   /*? min tab width */
+   --pf-tab-min-width: 135px;
+   /*? tab height */
+   --tab-min-height: 28px !important;
+   /*? rounded borders on tabs */
+   --tab-border-radius: var(--pf-radius-2) !important;
+   /*? titlebar-height, adjusts urlbar and other elements on the titlebar */
+   --pf-titlebar-height: 40px;
+   --pf-titlebar-buttons-icons-width: 14px;
+   --pf-titlebar-buttons-padding: 12px;
+}
+
+/*? tab list on navbar */
+#tabbrowser-tabs {
+   /*? cool shade of <color> after tab loads */
+   --tab-loading-fill: rgb(95, 11, 190) !important;
+}
+
+/*? tab on titlebar that's not pinned */
+.tabbrowser-tab[fadein]:not([pinned]) {
+   /*? min tab width */
+   min-width: var(--pf-tab-min-width) !important;
+   /*? max tab width */
+   max-width: var(--pf-tab-max-width) !important;
+}
+
+/*? tab background on titlebar */
+.tab-background[selected] {
+   outline: none !important;
+   /*? add gradient border when tab selected */
+   border: 2px solid rgba(0, 0, 0, 0) !important;
+   box-shadow: none !important;
+   background-clip: padding-box !important;
+}
+
+.tabbrowser-tab[selected] .tab-stack::after {
+   content: '';
+   border-radius: var(--pf-radius-2);
+   margin: 4px 0 4px 0;
+   background: var(--pf-gradient-main);
+   grid-area: 1/1;
+}
+
+/*? dont reduce text opacity when firefox is out of focus */
+:root[tabsintitlebar] .tab-label:-moz-window-inactive {
+   opacity: 1 !important;
+}
+
+:root[tabsintitlebar] .tab-secondary-label:-moz-window-inactive,
+.tab-secondary-label {
+   opacity: .8 !important;
+}
+
+/*? tweaks to "playing" text */
+.tab-icon-sound-label {
+   font-family: 'metropolis' !important;
+   height: 0rem !important;
+   margin: 0 !important;
+}
+
+/*? remove 2.7s delay for hiding "playing" after the tabs stops playing audio */
+.tab-secondary-label[soundplaying-scheduledremoval="true"] {
+   display: none !important;
+}
+
+/*? tab font and tweaks */
+.tab-label {
+   margin-top: .2rem !important;
+   margin-bottom: 0 !important;
+   padding: 0 !important;
+   font-family: 'metropolis' !important;
+   font-size: 1.1rem !important;
+}
+
+/*? hide the original "playing" label */
+.tab-secondary-label {
+   display: none !important;
+}
+
+@keyframes moveSecLabel {
+   0% {
+      background-position-x: 50%;
+   }
+
+   50% {
+      background-position-x: 100%;
+   }
+
+   50.0001% {
+      background-position-x: 0%;
+   }
+
+   100% {
+      background-position-x: 50%;
+   }
+}
+
+.tab-icon-stack:is([soundplaying], [soundplaying-scheduledremoval="false"])+.tab-label-container>.tab-label {
+   margin-top: .1rem !important;
+}
+
+.tab-icon-stack:is([soundplaying], [soundplaying-scheduledremoval="false"])+.tab-label-container>.tab-label::after {
+   background: var(--pf-gradient-main);
+   background-size: 1500%;
+   width: calc(var(--pf-tab-max-width) - (var(--pf-tab-max-width) * .35));
+   color: rgba(0, 0, 0, 0);
+   animation-name: moveSecLabel;
+   animation-duration: 6s;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+   content: '';
+   height: 2px;
+   display: block;
+   position: relative;
+   bottom: 4px;
+}
+
+.tab-icon-stack[soundplaying-scheduledremoval]+.tab-label-container>.tab-label::after {
+   display: none;
+}
+
+/*? close, minimise etc. buttons' size */
+.titlebar-button {
+   padding-right: var(--pf-titlebar-buttons-padding) !important;
+   padding-left: var(--pf-titlebar-buttons-padding) !important;
+}
+.titlebar-button > .toolbarbutton-icon {
+   width: var(--pf-titlebar-buttons-icons-width) !important;
+   height: var(--pf-titlebar-buttons-icons-width) !important;
+}
+
+/*? animation on hover on buttons */
+.toolbarbutton-badge-stack,
+.titlebar-button,
+.tab-close-button,
+.toolbarbutton-icon,
+.personalize-button,
+#urlbar-anon-search-settings,
+
+.toolbarbutton-badge-stack:hover,
+.titlebar-button:hover,
+.tab-close-button:hover,
+.toolbarbutton-icon:hover,
+.personalize-button:hover,
+#urlbar-anon-search-settings:hover {
+   transition: background .15s ease, background-color .15s ease;
+}
+
+.urlbarView-row,
+.searchbar-engine-one-off-item,
+
+.urlbarView-row:hover,
+.searchbar-engine-one-off-item:hover {
+   transition: background .085s ease, background-color .085s ease, background-image .085s ease;
+}
+
+/*? urlbar icons opacity change on hover (cool transitions from above included :3) */
+#identity-box *,
+#tracking-protection-icon-container *,
+#urlbar-search-button *,
+#remote-control-box *,
+#page-action-buttons * {
+   opacity: .75 !important;
+   transition: opacity .15s ease, background .15s ease, background-color .15s ease !important;
+}
+
+#urlbar:is(:focus, :hover) #identity-box *,
+#urlbar:is(:focus, :hover) #tracking-protection-icon-container *,
+#urlbar:is(:focus, :hover) #urlbar-search-button *,
+#urlbar:is(:focus, :hover) #remote-control-box *,
+#urlbar:is(:focus, :hover) #page-action-buttons * {
+   opacity: 1 !important;
+   transition: opacity .15s ease, background .15s ease, background-color .15s ease !important;
+}
+
+/*? change ugly grayy background */
+#urlbar-background {
+   display: none !important;
+}
+
+#urlbar * {
+   font-family: 'metropolis' !important;
+   font-size: 1.2rem !important;
+}
+
+.urlbarView-title,
+.urlbarView-url {
+   margin-top: .2rem !important;
+}
+
+.urlbarView-row-inner {
+   border-radius: 0 !important;
+}
+
+.urlbarView-row * {
+   border: none !important;
+}
+
+.urlbarView-row:is([selected], :hover) > .urlbarView-row-inner {
+   background-image: var(--pf-gradient-main) !important;
+   animation: opacity 2s ease-in-out forwards infinite !important;
+}
+
+@keyframes opacity {
+   0% {
+      opacity: 100%;
+   }
+
+   50% {
+      opacity: 80%;
+   }
+}
+
+.urlbarView {
+   background-image: linear-gradient(to bottom, rgba(0, 0, 0, .95) 0%, rgba(0, 0, 0, .775)) !important;
+   border-radius: 0 0 var(--pf-radius-1) var(--pf-radius-1) !important;
+   border-top: solid 4px var(--toolbar-bgcolor) !important;
+}
+
+.urlbarView-body-inner {
+   border-top: none !important;
+}
+
+#urlbar-results {
+   padding-top: none !important;
+}
+
+.search-panel-one-offs-container>.search-setting-button {
+   margin: 0 !important;
+   padding: 0 !important;
+   margin-right: 8px !important;
+}
+
+.urlbarView-favicon,
+#urlbar-one-offs-header-label {
+   margin-left: 8px !important;
+}
+
+/*? stop urlbar from expanding on focus */
+#urlbar[breakout-extend]>#urlbar-input-container,
+#urlbar-input-container {
+   height: var(--urlbar-height) !important;
+   padding-block: 0px !important;
+   padding-inline: 0px !important;
+   transition: none !important;
+}
+
+#urlbar[breakout-extend] {
+   top: calc((var(--pf-titlebar-height) - var(--urlbar-height)) / 2) !important;
+   left: 0 !important;
+   width: 100% !important;
+}
+
+#urlbar[breakout-extend] .urlbarView {
+   animation-name: urlbarExtend;
+   animation-duration: .15s;
+   animation-iteration-count: 1;
+   animation-timing-function: ease-in-out;
+}
+
+@keyframes urlbarExtend {
+   0% {
+      transform: translateY(-1.5%);
+      opacity: .675;
+   }
+   70% {
+      transform: translateY(-.5%);
+   }
+   100% {
+      transform: translateY(0%);
+      opacity: 1;
+   }
+}
+
+.search-one-offs {
+   padding-bottom: 8px !important;
+}
+
+#appMenu-proton-update-banner {
+   background-color: var(--pf-gradient-main) !important;
+}
+
+/*? sidebery sidebarcomand */
+/* _3c078156-979c-498b-8990-85f7987dd929_-sidebar-action */
+
+/*! ====== sidebery ====== */
+
+#main-window[titlepreface="​"] .tabbrowser-tab {
+   display: none !important;
+}
+
+#main-window[titlepreface="​"] .titlebar-button {
+   height: var(--pf-titlebar-height) !important;
+   padding: var(--pf-titlebar-buttons-padding) !important;
+}
+
+#main-window[titlepreface="​"] #nav-bar {
+   margin-top: -40px;
+   margin-right: calc((var(--pf-titlebar-buttons-icons-width) + (var(--pf-titlebar-buttons-padding) * 2)) * 3);
+}
+
+#main-window[titlepreface="​"] #titlebar-spacer {
+   background-color: var(--chrome-secondary-background-color);
+}
+
+#main-window[titlepreface="​"] #titlebar-buttonbox-container {
+   background-color: var(--chrome-secondary-background-color);
+}
+
+#main-window[titlepreface="​"] .titlebar-color {
+   background-color: var(--toolbar-bgcolor);
+}
+
+#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] #sidebar-header {
+   visibility: collapse;
+}

@@ -1,0 +1,52 @@
+.scrollable,
+.NavigationBar {
+   background: #303030 !important;
+}
+
+.Tab[data-selected] .lvl-wrapper {
+   background: #275ca4;
+   transition: background .35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.Tab .title {
+   color: #fff;
+}
+
+.Tab[data-discarded]>.lvl-wrapper>.t-box {
+   opacity: .65;
+}
+
+.t-box {
+   display: flex;
+   align-items: center;
+   height: 100%;
+}
+
+.Tab[data-active] .title {
+   color: #00c8d7;
+   transition: color .35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.Tab[data-active]:hover .title {
+   color: #00a4af;
+}
+
+.Tab,
+.Tab[data-selected] {
+   background: #212121;
+   transition: background .35s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform var(--d-fast), opacity var(--d-fast), padding var(--d-fast);
+}
+
+.Tab:hover {
+   background: #252525;
+   transition: background .35s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform var(--d-fast), opacity var(--d-fast), padding var(--d-fast);
+}
+
+.lvl-wrapper {
+   background: #303030;
+   opacity: 1;
+}
+
+.t-box>.title {
+   font-family: 'metropolis';
+}
