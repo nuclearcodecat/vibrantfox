@@ -98,7 +98,7 @@ url('about:home') {
    }
 
    #root::after {
-      content: 'made by orangeonfire';
+      content: 'made by wateroverdose';
       font-family: 'metropolis';
       color: #ddd;
       position: fixed;
@@ -273,7 +273,7 @@ url('about:home') {
    }
 
    body::after {
-      content: 'made by orangeonfire';
+      content: 'made by wateroverdose';
       font-family: 'metropolis';
       color: #ddd;
       position: fixed;
