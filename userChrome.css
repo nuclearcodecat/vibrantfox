@@ -7,24 +7,24 @@ ideas:
 
 :root {
    /*? standardized radius */
-   --pf-radius-1: 12.5px;
-   --pf-radius-2: 8px;
+   --wo-radius-1: 12.5px;
+   --wo-radius-2: 8px;
 
    /*? cool shit :)) */
-   --pf-gradient-main: linear-gradient(45deg, rgba(224, 16, 155, 1) 0%, rgba(152, 11, 235, 1) 12%, rgba(152, 11, 235, 1) 20%, rgba(23, 134, 242, 1) 45%, rgba(23, 134, 242, 1) 52%, rgba(152, 11, 235, 1) 80%, rgba(152, 11, 235, 1) 88%, rgba(224, 16, 155, 1) 100%);
+   --wo-gradient-main: linear-gradient(45deg, rgba(224, 16, 155, 1) 0%, rgba(152, 11, 235, 1) 12%, rgba(152, 11, 235, 1) 20%, rgba(23, 134, 242, 1) 45%, rgba(23, 134, 242, 1) 52%, rgba(152, 11, 235, 1) 80%, rgba(152, 11, 235, 1) 88%, rgba(224, 16, 155, 1) 100%);
 
    /*? max tab width */
-   --pf-tab-max-width: 165px;
+   --wo-tab-max-width: 165px;
    /*? min tab width */
-   --pf-tab-min-width: 135px;
+   --wo-tab-min-width: 135px;
    /*? tab height */
    --tab-min-height: 28px !important;
    /*? rounded borders on tabs */
-   --tab-border-radius: var(--pf-radius-2) !important;
+   --tab-border-radius: var(--wo-radius-2) !important;
    /*? titlebar-height, adjusts urlbar and other elements on the titlebar */
-   --pf-titlebar-height: 40px;
-   --pf-titlebar-buttons-icons-width: 14px;
-   --pf-titlebar-buttons-padding: 12px;
+   --wo-titlebar-height: 40px;
+   --wo-titlebar-buttons-icons-width: 14px;
+   --wo-titlebar-buttons-padding: 12px;
 }
 
 /*! ====== right-click context menu ====== */
@@ -118,9 +118,9 @@ ideas:
 /*? tab on titlebar that's not pinned */
 .tabbrowser-tab[fadein]:not([pinned]) {
    /*? min tab width */
-   min-width: var(--pf-tab-min-width) !important;
+   min-width: var(--wo-tab-min-width) !important;
    /*? max tab width */
-   max-width: var(--pf-tab-max-width) !important;
+   max-width: var(--wo-tab-max-width) !important;
 }
 
 /*? tab background on titlebar */
@@ -133,9 +133,9 @@ ideas:
 }
 .tabbrowser-tab[selected] .tab-stack::after {
    content: '';
-   border-radius: var(--pf-radius-2);
+   border-radius: var(--wo-radius-2);
    margin: 4px 0 4px 0;
-   background: var(--pf-gradient-main);
+   background: var(--wo-gradient-main);
    grid-area: 1/1;
 }
 
@@ -188,9 +188,9 @@ ideas:
 
 /*? "playing" gradient on tab */
 .tab-icon-stack:is([soundplaying], [soundplaying-scheduledremoval="false"])+.tab-label-container>.tab-label::after {
-   background: var(--pf-gradient-main);
+   background: var(--wo-gradient-main);
    background-size: 1500%;
-   width: calc(var(--pf-tab-max-width) - (var(--pf-tab-max-width) * .35));
+   width: calc(var(--wo-tab-max-width) - (var(--wo-tab-max-width) * .35));
    color: rgba(0, 0, 0, 0);
    animation-name: moveSecLabel;
    animation-duration: 6s;
@@ -210,12 +210,12 @@ ideas:
 
 /*? close, minimize etc. buttons' size */
 .titlebar-button {
-   padding-right: var(--pf-titlebar-buttons-padding) !important;
-   padding-left: var(--pf-titlebar-buttons-padding) !important;
+   padding-right: var(--wo-titlebar-buttons-padding) !important;
+   padding-left: var(--wo-titlebar-buttons-padding) !important;
 }
 .titlebar-button > .toolbarbutton-icon {
-   width: var(--pf-titlebar-buttons-icons-width) !important;
-   height: var(--pf-titlebar-buttons-icons-width) !important;
+   width: var(--wo-titlebar-buttons-icons-width) !important;
+   height: var(--wo-titlebar-buttons-icons-width) !important;
 }
 
 /*? animation on hover on buttons */
@@ -292,7 +292,7 @@ ideas:
 
 /*? add gradient when search result selected */
 .urlbarView-row:is([selected], :hover) > .urlbarView-row-inner {
-   background-image: var(--pf-gradient-main) !important;
+   background-image: var(--wo-gradient-main) !important;
    animation: opacity 2s ease-in-out forwards infinite !important;
 }
 
@@ -309,7 +309,7 @@ ideas:
 /*? urlbar popup */
 .urlbarView {
    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .95) 0%, rgba(0, 0, 0, .775)) !important;
-   border-radius: 0 0 var(--pf-radius-1) var(--pf-radius-1) !important;
+   border-radius: 0 0 var(--wo-radius-1) var(--wo-radius-1) !important;
    border-top: solid 4px var(--toolbar-bgcolor) !important;
 }
 
@@ -346,7 +346,7 @@ ideas:
    transition: none !important;
 }
 #urlbar[breakout-extend] {
-   top: calc((var(--pf-titlebar-height) - var(--urlbar-height)) / 2) !important;
+   top: calc((var(--wo-titlebar-height) - var(--urlbar-height)) / 2) !important;
    left: 0 !important;
    width: 100% !important;
 }
@@ -377,7 +377,7 @@ ideas:
 
 /*? change update background to gradient */
 #appMenu-proton-update-banner {
-   background-image: var(--pf-gradient-main) !important; /*! not tested */
+   background-image: var(--wo-gradient-main) !important; /*! not tested */
 }
 
 /*? change font to silly font */
@@ -405,14 +405,14 @@ ideas:
 }
 
 #main-window[titlepreface="​"] .titlebar-button {
-   height: var(--pf-titlebar-height) !important;
-   padding: var(--pf-titlebar-buttons-padding) !important;
+   height: var(--wo-titlebar-height) !important;
+   padding: var(--wo-titlebar-buttons-padding) !important;
 }
 
 #main-window[titlepreface="​"] #nav-bar {
-/*    margin-top: -var(--pf-titlebar-height); */
+/*    margin-top: -var(--wo-titlebar-height); */
    margin-top: -40px !important;
-   margin-right: calc((var(--pf-titlebar-buttons-icons-width) + (var(--pf-titlebar-buttons-padding) * 2)) * 3) !important;
+   margin-right: calc((var(--wo-titlebar-buttons-icons-width) + (var(--wo-titlebar-buttons-padding) * 2)) * 3) !important;
 }
 
 #main-window[titlepreface="​"] .titlebar-color {
