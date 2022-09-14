@@ -16,6 +16,7 @@ if you want to add a feature to vibrantfox, create a pull request
 ## video installation tutorial
 ### (click to go to youtube)
 <a href="http://www.youtube.com/embed/J7sTyyUNAm4" target="_blank"><img src="https://i.ibb.co/86bCT7y/vlc-CESle-NOAPS.png" alt="youtube tutorial" width="680" height="386"/></a>
+(my youtube account got deleted for no reason (i literally only posted 2 showcases of my github things on there lol))
 
 ## installation tutorial
 - #### download vibrantfox
