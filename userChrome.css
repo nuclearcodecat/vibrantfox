@@ -425,6 +425,18 @@ ideas:
 
 /* ! UPDATE ! */
 
+/* change color back to normal */
 #nav-bar-customization-target, #nav-bar toolbarbutton, #nav-bar toolbaritem {
   background: #2b2a33;
+}
+
+/* disable bold text on selected tab */
+.tab-label:is([selected], [attention]) {
+  font-weight: normal !important;
+}
+
+/* fix weird border on top of urlbar */
+.urlbarView {
+  margin-top: 5px !important;
+  border-top: none !important;
 }
